@@ -4,20 +4,21 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
 
+</br>
 
 <center>
-</br>
-<h1>What time do you want to start your Amrit Vela?</h1>
-<select id="avStartTimeOption" onchange="run()">
-  <option value="" disabled selected>Select your option</option>
+  <div class="row">
+    <div class="col-md-6">
+
+<select class="form-control" style="width:200px;" id="avStartTimeOption" onchange="run()">
+  <option value="" disabled selected>Amrit Vela Start Time</option>
   <option value="3">3:00AM</option>
   <option value="3.5">3:30AM</option>
   <option value="4">4:00AM</option>
@@ -25,14 +26,18 @@
   <option value="5">5:00AM</option>
   <option value="5.5">5:30AM</option>
   <option value="6">6:00AM</option>
+  <option value="6.5">6:30AM</option>
+  <option value="7">7:00AM</option>
+  <option value="7.5">7:30AM</option>
+  <option value="8">8:00AM</option>
 </select>
 
+    </div>
 
+    <div class="col-md-6">
 
-
-<h1> How many of hours of sleep would you like?</h1>
-<select id="sleepHoursOption" onchange="run()">
-  <option value="" disabled selected>Select your option</option>
+<select class="form-control" style="width:200px;" id="sleepHoursOption" onchange="run()">
+  <option value="" disabled selected>Hours of Sleep</option>
   <option value="4">4 hours</option>
   <option value="5">5 hours</option>
   <option value="6">6 hours</option>
@@ -42,13 +47,33 @@
   <option value="10">10 hours</option>
 </select>
 
+    </div>
+  </div>
+</center>
 
 </br>
 </br>
+
+<div class="row">
+  <div class="col-md-12">
+      <center><input type="button" id="btnReset" value="Reset" onclick="Reset();" /></center>
+  </div>
+</div>
+
+</br>
+
+<div class="jumbotron">
+<div class="container">
+<h1><center><p id="finalOutputValue"></p><center></h1>
+</div>
+</div>
+
+<!-- Testing outputs
 <p>Amrit Vela Value<div id="avValue"></div></p>
 <p>Sleep Hours Value<div id="sleepValue"></div></p>
 <p>Bedtime Value<div id="bedTimeValue"></div></p>
 <p>Final Output Value<div id="finalOutputValue"></div></p>
+-->
 
   <script>
   function run() {
@@ -67,19 +92,47 @@
 
     // Setups the final output var
       let finalOutput = "";
-      
+
     // Translates value to a time for each posible outcome
       switch (bedTime) {
+        case 4:
+          finalOutput = 'You should sleep at 4:00AM';
+          break;
+
+        case 3.5:
+          finalOutput = 'You should sleep at 3:30AM';
+          break;
+
+        case 3:
+          finalOutput = 'You should sleep at 3:00AM';
+          break;
+
+        case 2.5:
+          finalOutput = 'You should sleep at 2:30AM';
+          break;
+
         case 2:
           finalOutput = 'You should sleep at 2:00AM';
+          break;
+
+        case 1.5:
+          finalOutput = 'You should sleep at 1:30AM';
           break;
 
         case 1:
           finalOutput = 'You should sleep at 1:00AM';
           break;
 
+        case .5:
+          finalOutput = 'You should sleep at 12:30AM';
+          break;
+
         case 0:
           finalOutput = 'You should sleep at 12:00AM';
+          break;
+
+        case -.5:
+          finalOutput = 'You should sleep at 11:30PM';
           break;
 
         case -1:
@@ -136,19 +189,26 @@
 
       }
 
-
-
-      document.getElementById("avValue").innerHTML = avStartTime;
-      document.getElementById("sleepValue").innerHTML = sleepHours;
-      document.getElementById("bedTimeValue").innerHTML = bedTime;
+  //    document.getElementById("avValue").innerHTML = avStartTime;
+  //    document.getElementById("sleepValue").innerHTML = sleepHours;
+  //    document.getElementById("bedTimeValue").innerHTML = bedTime;
       document.getElementById("finalOutputValue").innerHTML = finalOutput;
   }
   </script>
 
+<script>
+function Reset() {
+        var dropDown = document.getElementById("avStartTimeOption");
+        dropDown.selectedIndex = 0;
 
+        var dropDown = document.getElementById("sleepHoursOption");
+        dropDown.selectedIndex = 0;
 
+        document.getElementById("finalOutputValue").innerHTML ='';
 
-</center>
+}
+</script>
+
 </body>
 
 
