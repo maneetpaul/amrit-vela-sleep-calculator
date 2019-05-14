@@ -27,19 +27,121 @@
   <option value="6">6:00AM</option>
 </select>
 
+
+
+
+<h1> How many of hours of sleep would you like?</h1>
+<select id="sleepHoursOption" onchange="run()">
+  <option value="" disabled selected>Select your option</option>
+  <option value="4">4 hours</option>
+  <option value="5">5 hours</option>
+  <option value="6">6 hours</option>
+  <option value="7">7 hours</option>
+  <option value="8">8 hours</option>
+  <option value="9">9 hours</option>
+  <option value="10">10 hours</option>
+</select>
+
+
 </br>
-  <div id="resultBox"></div>
-
-
-
-
-
-
-
+</br>
+<p>Amrit Vela Value<div id="avValue"></div></p>
+<p>Sleep Hours Value<div id="sleepValue"></div></p>
+<p>Bedtime Value<div id="bedTimeValue"></div></p>
+<p>Final Output Value<div id="finalOutputValue"></div></p>
 
   <script>
   function run() {
-      document.getElementById("resultBox").innerHTML = document.getElementById("avStartTimeOption").value;
+    // Translates HTML dropdowns to JS variables
+      let avStartTime = document.getElementById("avStartTimeOption").value;
+      let sleepHours = document.getElementById("sleepHoursOption").value;
+
+    // Setups up the bedTime var
+    let bedTime = "";
+
+    // Only sets a value if both parameters are set by the user
+    if (avStartTime > 0 && sleepHours > 0) {
+      bedTime = avStartTime - sleepHours;
+    }
+
+
+    // Setups the final output var
+      let finalOutput = "";
+      
+    // Translates value to a time for each posible outcome
+      switch (bedTime) {
+        case 2:
+          finalOutput = 'You should sleep at 2:00AM';
+          break;
+
+        case 1:
+          finalOutput = 'You should sleep at 1:00AM';
+          break;
+
+        case 0:
+          finalOutput = 'You should sleep at 12:00AM';
+          break;
+
+        case -1:
+          finalOutput = 'You should sleep at 11:00PM';
+          break;
+
+        case -1.5:
+          finalOutput = 'You should sleep at 10:30PM';
+          break;
+
+        case -2:
+          finalOutput = 'You should sleep at 10:00PM';
+          break;
+
+        case -2.5:
+          finalOutput = 'You should sleep at 9:30PM';
+          break;
+
+        case -3:
+          finalOutput = 'You should sleep at 9:00PM';
+          break;
+
+        case -3.5:
+          finalOutput = 'You should sleep at 8:30PM';
+          break;
+
+        case -4:
+          finalOutput = 'You should sleep at 8:00PM';
+          break;
+
+        case -4.5:
+          finalOutput = 'You should sleep at 7:30PM';
+          break;
+
+        case -5:
+          finalOutput = 'You should sleep at 7:00PM';
+          break;
+
+        case -5.5:
+          finalOutput = 'You should sleep at 6:30PM';
+          break;
+
+        case -6:
+          finalOutput = 'You should sleep at 6:00PM';
+          break;
+
+        case -6.5:
+          finalOutput = 'You should sleep at 5:30PM';
+          break;
+
+        case -7:
+          finalOutput = 'You should sleep at 5:00PM';
+          break;
+
+      }
+
+
+
+      document.getElementById("avValue").innerHTML = avStartTime;
+      document.getElementById("sleepValue").innerHTML = sleepHours;
+      document.getElementById("bedTimeValue").innerHTML = bedTime;
+      document.getElementById("finalOutputValue").innerHTML = finalOutput;
   }
   </script>
 
