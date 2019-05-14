@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"> 
+<meta charset="utf-8">
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap --!>
+<!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<!---
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p> 
-</div>
 
-<div class="container-fluid">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p> 
-</div>  
- --> 
-  
-<center> 
- 
-<div>  
-	<h1>What time do you want to start your Amrit Vela?</h1>
-	<div class="dropdown">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Choose a time...
-		<span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			<li><a href="#">3:00AM</a></li>
-			<li><a href="#">3:30AM</a></li>
-			<li><a href="#">4:00AM</a></li>
-			<li><a href="#">4:30AM</a></li>
-			<li><a href="#">5:00AM</a></li>
-			<li><a href="#">5:30AM</a></li>
-			<li><a href="#">6:00AM</a></li>
-		</ul>
-	</div>		
-</div>
+
+<center>
+</br>
+<h1>What time do you want to start your Amrit Vela?</h1>
+<select id="avStartTimeOption" onchange="run()">
+  <option value="" disabled selected>Select your option</option>
+  <option value="3">3:00AM</option>
+  <option value="3.5">3:30AM</option>
+  <option value="4">4:00AM</option>
+  <option value="4.5">4:30AM</option>
+  <option value="5">5:00AM</option>
+  <option value="5.5">5:30AM</option>
+  <option value="6">6:00AM</option>
+</select>
+
+</br>
+  <div id="resultBox"></div>
+
+
+
+
+
+
+
+
+  <script>
+  function run() {
+      document.getElementById("resultBox").innerHTML = document.getElementById("avStartTimeOption").value;
+  }
+  </script>
+
 
 
 
